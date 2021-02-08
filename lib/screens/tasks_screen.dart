@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:todoey_flutter/widgets/tasks_list.dart';
+import 'add_task_screen.dart';
 
 class TasksScreen extends StatelessWidget {
   @override
@@ -8,7 +9,12 @@ class TasksScreen extends StatelessWidget {
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
-        onPressed: () {},
+        onPressed: () {
+          showModalBottomSheet(
+              isScrollControlled: true,
+              context: context,
+              builder: (context) => AddTaskScreen());
+        },
         child: Icon(Icons.add),
       ),
       body: Column(
@@ -16,18 +22,18 @@ class TasksScreen extends StatelessWidget {
         children: [
           Container(
             padding: EdgeInsets.only(
-                top: 60.0, left: 30.0, right: 30.0, bottom: 30.0),
+                top: 30.0, left: 30.0, right: 30.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 CircleAvatar(
                   child: Icon(
                     Icons.list,
-                    size: 30.0,
+                    size: 20.0,
                     color: Colors.lightBlueAccent,
                   ),
                   backgroundColor: Colors.white,
-                  radius: 30.0,
+                  radius: 20.0,
                 ),
                 SizedBox(
                   height: 10.0,
@@ -36,7 +42,7 @@ class TasksScreen extends StatelessWidget {
                   'Todoey',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 50.0,
+                    fontSize: 30.0,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
@@ -44,7 +50,7 @@ class TasksScreen extends StatelessWidget {
                   '12 tasks',
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24.0,
+                    fontSize: 18.0,
                   ),
                 ),
               ],
@@ -64,6 +70,12 @@ class TasksScreen extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  Widget buildBottomSheet(BuildContext context) {
+    return Container(
+      child: Text('This is a bottom sheet'),
     );
   }
 }
