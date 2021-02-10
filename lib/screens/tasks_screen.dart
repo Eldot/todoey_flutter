@@ -9,20 +9,25 @@ class TasksScreen extends StatelessWidget {
       backgroundColor: Colors.lightBlueAccent,
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.lightBlueAccent,
+        child: Icon(Icons.add),
         onPressed: () {
           showModalBottomSheet(
-              isScrollControlled: true,
-              context: context,
-              builder: (context) => AddTaskScreen());
+            context: context,
+            isScrollControlled: true, // Makes the modal bottom sheet full height
+            builder: (context) => SingleChildScrollView(
+              child: Container(
+                padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+                child: AddTaskScreen(),
+              ),
+            ),
+          );
         },
-        child: Icon(Icons.add),
       ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            padding: EdgeInsets.only(
-                top: 30.0, left: 30.0, right: 30.0, bottom: 20.0),
+            padding: EdgeInsets.only(top: 30.0, left: 30.0, right: 30.0, bottom: 20.0),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -61,9 +66,7 @@ class TasksScreen extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20.0),
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    topLeft: Radius.circular(20.0),
-                    topRight: Radius.circular(20.0)),
+                borderRadius: BorderRadius.only(topLeft: Radius.circular(20.0), topRight: Radius.circular(20.0)),
               ),
               child: TasksList(),
             ),

@@ -5,7 +5,6 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Color(0xff757575),
-      height: 450.0,
       child: Container(
         padding: EdgeInsets.symmetric(horizontal: 20.0),
         decoration: BoxDecoration(
