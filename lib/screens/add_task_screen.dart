@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/models/task.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  String newTaskName = '';
+  final String newTaskName = '';
   final Function addTaskCallback;
   AddTaskScreen(this.addTaskCallback);
   @override
@@ -33,7 +32,7 @@ class AddTaskScreen extends StatelessWidget {
               autofocus: true, // to pop up the keyboard automatically
               textAlign: TextAlign.center,
               onChanged: (String value) {
-                newTaskName = value;
+                //newTaskName = value;
               },
             ),
             FlatButton(
