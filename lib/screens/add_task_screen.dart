@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/models/task.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey_flutter/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  String newTaskName = '';
-  final Function addTaskCallback;
-  AddTaskScreen(this.addTaskCallback);
   @override
   Widget build(BuildContext context) {
+    String newTaskTitle;
     return Container(
       color: Color(0xff757575),
       child: Container(
@@ -33,7 +32,7 @@ class AddTaskScreen extends StatelessWidget {
               autofocus: true, // to pop up the keyboard automatically
               textAlign: TextAlign.center,
               onChanged: (String value) {
-                newTaskName = value;
+                newTaskTitle = value;
               },
             ),
             FlatButton(
@@ -45,7 +44,8 @@ class AddTaskScreen extends StatelessWidget {
               ),
               color: Colors.lightBlueAccent,
               onPressed: () {
-                addTaskCallback(newTaskName);
+                Provider.of<TaskData>(context, listen: false).addTask(newTaskTitle);
+                Navigator.pop(context);
               },
             ),
           ],
